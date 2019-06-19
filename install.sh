@@ -51,6 +51,15 @@ REPLACE_EXAMPLE="
 
 # Construct your own list here
 REPLACE="
+/system/priv-app/HealthService/HealthService.apk
+/system/lib/libsecure_storage_jni.so
+/system/lib/libsecure_storage.so
+/system/etc/permissions/shealth_sw_pedometer_paused.xml
+/system/etc/permissions/android.hardware.sensor.heartrate.xml
+/system/etc/permissions/privapp-permissions-com.sec.android.app.shealth.xml
+/system/etc/permissions/privapp-permissions-com.sec.android.service.health.xml
+/system/etc/secure_storage/com.sec.android.service.health/ss_id
+/system/etc/secure_storage/com.sec.android.service.health!dex/ss_id
 "
 
 ##########################################################################################
@@ -123,7 +132,7 @@ REPLACE="
 
 print_modname() {
   ui_print "*******************************"
-  ui_print "     Magisk Module Template    "
+  ui_print "   Heart Rate Sensor Enabler   "
   ui_print "*******************************"
 }
 

@@ -1,6 +1,6 @@
-id=template
-name=Template Module
-version=v1
+id=Heart-Rate-Sensor_Enabler
+name=Heart Rate Sensor Enabler for SGS5
+version=v1.0
 versionCode=1
-author=topjohnwu
-description=A short description
+author=sunilpaulmathew@xda-developers.com
+description=Enable Heart Rate Sensor on Samsung Galaxy S5 Snapdragon 801 variants running AOSP based ROMs (Nougat/Oreo/Pie)
