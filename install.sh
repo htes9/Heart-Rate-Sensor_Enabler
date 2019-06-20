@@ -51,15 +51,6 @@ REPLACE_EXAMPLE="
 
 # Construct your own list here
 REPLACE="
-/system/priv-app/HealthService/HealthService.apk
-/system/lib/libsecure_storage_jni.so
-/system/lib/libsecure_storage.so
-/system/etc/permissions/shealth_sw_pedometer_paused.xml
-/system/etc/permissions/android.hardware.sensor.heartrate.xml
-/system/etc/permissions/privapp-permissions-com.sec.android.app.shealth.xml
-/system/etc/permissions/privapp-permissions-com.sec.android.service.health.xml
-/system/etc/secure_storage/com.sec.android.service.health/ss_id
-/system/etc/secure_storage/com.sec.android.service.health!dex/ss_id
 "
 
 ##########################################################################################
@@ -143,6 +134,7 @@ on_install() {
   # Extend/change the logic to whatever you want
   ui_print "- Extracting module files"
   unzip -o "$ZIPFILE" 'system/*' -d $MODPATH >&2
+  device_check
 }
 
 # Only some special files require specific permissions
@@ -161,3 +153,20 @@ set_permissions() {
 }
 
 # You can add more functions to assist your custom script code
+
+device_check() {
+  if [ -f vendor/build.prop ]; then 
+    DEVICEID="/system/build.prop vendor/build.prop"; 
+  else
+    DEVICEID="/system/build.prop"; 
+  fi
+
+  SUPPORTED=$(grep -E "ro.product.device=kltexx|ro.product.device=kltelra|ro.product.device=kltetmo|ro.product.device=kltecan|ro.product.device=klteatt|ro.product.device=klteub|ro.product.device=klteacg|ro.product.device=klte|ro.product.device=kltekor|ro.product.device=klteskt|ro.product.device=kltektt|ro.product.device=kltelgt|ro.product.device=kltejpn|ro.product.device=kltekdi" $DEVICEID)
+
+  if [ -n "$SUPPORTED" ]; then
+    break
+  else
+    abort "This module is only for Samsung Galaxy S5 Snapdragon 801 variants."
+  fi
+  }
+}
