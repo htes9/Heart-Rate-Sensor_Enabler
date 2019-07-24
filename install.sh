@@ -168,5 +168,4 @@ device_check() {
   else
     abort "This module is only for Samsung Galaxy S5 Snapdragon 801 variants."
   fi
-  }
 }
